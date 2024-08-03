@@ -1,67 +1,79 @@
-import { Form, Button, Container } from 'react-bootstrap';
-import React from 'react';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBInput,
-  MDBIcon,
-  MDBCheckbox
-}
-from 'mdb-react-ui-kit';
+import React, { useState } from 'react';
+import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
 
 function Register() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Kayıt işlemlerini burada gerçekleştirin
+    console.log('Username:', username);
+    console.log('Email:', email);
+    console.log('Password:', password);
+    console.log('Confirm Password:', confirmPassword);
+    console.log('MERHABA ABİCİM .');
+  };
+
   return (
-    <MDBContainer fluid>
+    <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+      <Row>
+        <Col>
+          <Card style={{ width: '25rem' }}>
+            <Card.Body>
+              <Card.Title className="text-center">Register</Card.Title>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicUsername">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </Form.Group>
 
-      <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
-        <MDBCardBody>
-          <MDBRow>
-            <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Form.Group>
 
-              <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Form.Group>
 
-              <div className="d-flex flex-row align-items-center mb-4 ">
-                <MDBIcon fas icon="user me-3" size='lg'/>
-                <MDBInput label='Your Name' id='form1' type='text' className='w-100'/>
-              </div>
+                <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </Form.Group>
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="envelope me-3" size='lg'/>
-                <MDBInput label='Your Email' id='form2' type='email'/>
-              </div>
-
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="lock me-3" size='lg'/>
-                <MDBInput label='Password' id='form3' type='password'/>
-              </div>
-
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="key me-3" size='lg'/>
-                <MDBInput label='Repeat your password' id='form4' type='password'/>
-              </div>
-
-              <div className='mb-4'>
-                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
-              </div>
-
-              <MDBBtn className='mb-4' size='lg'>Register</MDBBtn>
-
-            </MDBCol>
-
-            <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
-              <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
-            </MDBCol>
-
-          </MDBRow>
-        </MDBCardBody>
-      </MDBCard>
-
-    </MDBContainer>
+                <Button variant="primary" type="submit" className="w-100 mt-3">
+                  Register
+                </Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
